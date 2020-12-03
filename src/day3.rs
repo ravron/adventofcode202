@@ -43,7 +43,7 @@ fn check_slope(field: &Field, right: usize, down: usize) -> i32 {
     let mut col = 0;
     let mut trees = 0;
     for row in (0..field.m).step_by(down) {
-        if field.lines[row * field.n + col] == true {
+        if field.lines[row * field.n + col] {
             trees += 1;
         }
         col = (col + right) % field.n;
