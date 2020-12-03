@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{BufReader, BufRead};
 
 pub fn day1() {
-    let f = File::open("day1.txt").unwrap();
+    let f = File::open("inputs/day1.txt").unwrap();
     let r = BufReader::new(f);
 
     let mut v: Vec<u32> = Vec::new();

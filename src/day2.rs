@@ -4,7 +4,7 @@ use std::io::prelude::*;
 use std::ops::RangeInclusive;
 
 pub fn day2() {
-    let f = File::open("day2.txt").unwrap();
+    let f = File::open("inputs/day2.txt").unwrap();
     let buf_reader = BufReader::new(f);
 
     let (mut valid_pt_1_count, mut valid_pt_2_count) = (0, 0);
