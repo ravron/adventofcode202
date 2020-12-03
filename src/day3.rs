@@ -22,8 +22,8 @@ pub fn day3() {
     };
 
     for (row, line) in lines.iter().enumerate() {
-        for (col, char) in line.chars().enumerate() {
-            if char == '#' {
+        for (col, chr) in line.chars().enumerate() {
+            if chr == '#' {
                 field.lines[row * n + col] = true;
             }
         }
