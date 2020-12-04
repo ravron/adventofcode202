@@ -4,19 +4,11 @@ pub fn day4() {
     let input = include_str!("../inputs/day4.txt");
 
     let mut valid_passports_1 = 0;
-
-    for record in input.split("\n\n") {
-        if has_required_fields(record) {
-            valid_passports_1 += 1;
-        }
-    }
-
-    println!("part 1: {} valid \"passports\"", valid_passports_1);
-
     let mut valid_passports_2 = 0;
 
     'outer: for record in input.split("\n\n") {
         if !has_required_fields(record) { continue; }
+        valid_passports_1 += 1;
 
         for field in record.split_whitespace() {
             let (field_name, field_value) = {
@@ -25,7 +17,6 @@ pub fn day4() {
             };
 
             if !validate_field(field_name, field_value) {
-                println!("{}:{} is invalid", field_name, field_value);
                 continue 'outer;
             }
         }
@@ -33,6 +24,7 @@ pub fn day4() {
         valid_passports_2 += 1;
     }
 
+    println!("part 1: {} valid \"passports\"", valid_passports_1);
     println!("part 2: {} valid \"passports\"", valid_passports_2);
 }
 
