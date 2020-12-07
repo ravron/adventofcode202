@@ -1,5 +1,6 @@
 // This nonsense is required to have benchmarking coexist while allowing
-// the normal program to run on stable.
+// the normal program to run on stable. The "unstable" feature is not a magic
+// keyword, it's just a bogus feature defined in my Cargo.toml.
 #![cfg_attr(feature = "unstable", feature(test))]
 
 use std::env;
