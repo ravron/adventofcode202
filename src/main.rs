@@ -1,5 +1,12 @@
+// This nonsense is required to have benchmarking coexist while allowing
+// the normal program to run on stable.
+#![cfg_attr(feature = "unstable", feature(test))]
+
 use std::env;
 #[macro_use] extern crate lazy_static;
+
+#[cfg(feature = "unstable")]
+extern crate test;
 
 mod day1;
 mod day2;
