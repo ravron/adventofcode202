@@ -9,38 +9,27 @@ fn day5_impl() -> (usize, usize) {
 
     let mut all_seats = [false; 1024];
 
-    let mut min_seat: u16 = 1024;
-    let mut max_seat: u16 = 0;
+    let mut min_seat: usize = u16::MAX as usize;
+    let mut max_seat: usize = u16::MIN as usize;
     for seat in input.lines().map(parse_seat) {
-        all_seats[seat as usize] = true;
-        min_seat = min_seat.min(seat);
-        max_seat = max_seat.max(seat);
+        all_seats[seat] = true;
+        min_seat = if seat < min_seat { seat } else { min_seat };
+        max_seat = if seat > max_seat { seat } else { max_seat };
     }
 
-    let mut all_seats: Vec<u16> = input.lines()
-        .map(parse_seat)
-        .collect();
+    let mut part_2_seat: usize = 0;
 
-    all_seats.sort();
-
-    let max_seat = *all_seats.last().unwrap();
-
-    let mut part_2_seat: u16 = 0;
-
-    let first_seat = all_seats[0];
-    for (i, seat) in all_seats.iter().enumerate() {
-        if i + first_seat as usize != *seat as usize {
-            // Minus 1 because when we detect the discrepancy, we've passed
-            // your seat.
-            part_2_seat = seat - 1;
+    for (i, seat) in all_seats[min_seat..=max_seat].iter().enumerate() {
+        if !seat {
+            part_2_seat = i + min_seat;
             break;
         }
     }
-    (max_seat as usize, part_2_seat as usize)
+    (max_seat, part_2_seat)
 }
 
-fn parse_seat(seat: &str) -> u16 {
-    let mut seat_id: u16 = 0;
+fn parse_seat(seat: &str) -> usize {
+    let mut seat_id: usize = 0;
     for (i, c) in seat.bytes().enumerate() {
         match c {
             b'B' | b'R' => seat_id |= 0x200 >> i,
