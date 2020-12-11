@@ -67,7 +67,7 @@ mod tests {
     }
 
     #[bench]
-    fn bench_day9(b: &mut Bencher) {
+    fn bench_day10(b: &mut Bencher) {
         b.iter(day10_impl);
     }
 }
