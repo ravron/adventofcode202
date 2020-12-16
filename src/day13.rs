@@ -1,4 +1,3 @@
-
 pub fn day13() {
     let (p1, p2) = day13_impl();
     println!("part 1: {}", p1);
@@ -43,11 +42,10 @@ fn day13_impl() -> (usize, usize) {
     (p1, t)
 }
 
-
 fn next_matching_ts(buses: &[usize], offsets: &[usize], start: usize) -> (usize, usize) {
     let max = buses.iter().product();
     // product of 0..n-1 is step
-    let step = buses.iter().take(buses.len()-1).product();
+    let step = buses.iter().take(buses.len() - 1).product();
     let mut iters: usize = 0;
     for i in (start..max).step_by(step) {
         iters += 1;
