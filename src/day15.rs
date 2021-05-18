@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 pub fn day15() {
     let (p1, p2) = day15_impl();
     println!("part 1: {}", p1);
